@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.learnreactiveprogramming.service.FluxAndMonoGeneratorServiceTest" tests="27" skipped="0" failures="0" errors="0" timestamp="2023-02-11T14:49:55" hostname="DESKTOP-IDRB8TD" time="11.603">
+  <properties/>
+  <testcase name="exploreMerge()" classname="com.learnreactiveprogramming.service.FluxAndMonoGeneratorServiceTest" time="0.544"/>
+  <testcase name="namesFluxFlatMapFilterByLength()" classname="com.learnreactiveprogramming.service.FluxAndMonoGeneratorServiceTest" time="0.017"/>
+  <testcase name="nameMonoFlatMapMany()" classname="com.learnreactiveprogramming.service.FluxAndMonoGeneratorServiceTest" time="0.005"/>
+  <testcase name="exploreZip2()" classname="com.learnreactiveprogramming.service.FluxAndMonoGeneratorServiceTest" time="0.024"/>
+  <testcase name="namesFluxTransform()" classname="com.learnreactiveprogramming.service.FluxAndMonoGeneratorServiceTest" time="0.005"/>
+  <testcase name="exploreConcatWith()" classname="com.learnreactiveprogramming.service.FluxAndMonoGeneratorServiceTest" time="0.004"/>
+  <testcase name="exploreConcat()" classname="com.learnreactiveprogramming.service.FluxAndMonoGeneratorServiceTest" time="0.002"/>
+  <testcase name="exploreMergeSequential()" classname="com.learnreactiveprogramming.service.FluxAndMonoGeneratorServiceTest" time="0.387"/>
+  <testcase name="namesFluxFlatMapAsync()" classname="com.learnreactiveprogramming.service.FluxAndMonoGeneratorServiceTest" time="3.745"/>
+  <testcase name="namesFluxInmutability()" classname="com.learnreactiveprogramming.service.FluxAndMonoGeneratorServiceTest" time="0.003"/>
+  <testcase name="main()" classname="com.learnreactiveprogramming.service.FluxAndMonoGeneratorServiceTest" time="0.0"/>
+  <testcase name="namesFluxFilterByLength()" classname="com.learnreactiveprogramming.service.FluxAndMonoGeneratorServiceTest" time="0.001"/>
+  <testcase name="splitStringWithDelay()" classname="com.learnreactiveprogramming.service.FluxAndMonoGeneratorServiceTest" time="0.0"/>
+  <testcase name="namesFluxMap()" classname="com.learnreactiveprogramming.service.FluxAndMonoGeneratorServiceTest" time="0.001"/>
+  <testcase name="namesFluxTransformDefaultEmpty()" classname="com.learnreactiveprogramming.service.FluxAndMonoGeneratorServiceTest" time="0.003"/>
+  <testcase name="namesFluxTransformSwitchIfEmpty()" classname="com.learnreactiveprogramming.service.FluxAndMonoGeneratorServiceTest" time="0.006"/>
+  <testcase name="exploreMergeZipWithMono()" classname="com.learnreactiveprogramming.service.FluxAndMonoGeneratorServiceTest" time="0.011"/>
+  <testcase name="namesFluxMapFilterByLength()" classname="com.learnreactiveprogramming.service.FluxAndMonoGeneratorServiceTest" time="0.003"/>
+  <testcase name="namesFlux()" classname="com.learnreactiveprogramming.service.FluxAndMonoGeneratorServiceTest" time="0.001"/>
+  <testcase name="exploreZipWith()" classname="com.learnreactiveprogramming.service.FluxAndMonoGeneratorServiceTest" time="0.002"/>
+  <testcase name="exploreZip()" classname="com.learnreactiveprogramming.service.FluxAndMonoGeneratorServiceTest" time="0.002"/>
+  <testcase name="exploreMergeWithMono()" classname="com.learnreactiveprogramming.service.FluxAndMonoGeneratorServiceTest" time="0.001"/>
+  <testcase name="exploreMergeWith()" classname="com.learnreactiveprogramming.service.FluxAndMonoGeneratorServiceTest" time="0.378"/>
+  <testcase name="nameMono()" classname="com.learnreactiveprogramming.service.FluxAndMonoGeneratorServiceTest" time="0.0"/>
+  <testcase name="namesConcatMap()" classname="com.learnreactiveprogramming.service.FluxAndMonoGeneratorServiceTest" time="6.429"/>
+  <testcase name="nameMonoFlatMap()" classname="com.learnreactiveprogramming.service.FluxAndMonoGeneratorServiceTest" time="0.011"/>
+  <testcase name="splitString()" classname="com.learnreactiveprogramming.service.FluxAndMonoGeneratorServiceTest" time="0.001"/>
+  <system-out><![CDATA[09:49:55.840 [Test worker] DEBUG reactor.util.Loggers$LoggerFactory - Using Slf4j logging framework
+09:49:55.882 [Test worker] INFO item: - onSubscribe(FluxFlatMap.FlatMapMain)
+09:49:55.885 [Test worker] INFO item: - request(unbounded)
+09:49:56.024 [parallel-1] INFO item: - onNext(A)
+09:49:56.050 [parallel-2] INFO item: - onNext(D)
+09:49:56.129 [parallel-3] INFO item: - onNext(B)
+09:49:56.175 [parallel-4] INFO item: - onNext(E)
+09:49:56.236 [parallel-5] INFO item: - onNext(C)
+09:49:56.299 [parallel-6] INFO item: - onNext(F)
+09:49:56.300 [parallel-6] INFO item: - onComplete()
+09:49:56.327 [Test worker] INFO reactor.Flux.MonoFlatMapMany.2 - onSubscribe(MonoFlatMapMany.FlatMapManyMain)
+09:49:56.327 [Test worker] INFO reactor.Flux.MonoFlatMapMany.2 - request(unbounded)
+09:49:56.327 [Test worker] INFO reactor.Flux.MonoFlatMapMany.2 - onNext(A)
+09:49:56.327 [Test worker] INFO reactor.Flux.MonoFlatMapMany.2 - onNext(L)
+09:49:56.327 [Test worker] INFO reactor.Flux.MonoFlatMapMany.2 - onNext(E)
+09:49:56.327 [Test worker] INFO reactor.Flux.MonoFlatMapMany.2 - onNext(X)
+09:49:56.328 [Test worker] INFO reactor.Flux.MonoFlatMapMany.2 - onComplete()
+09:49:56.332 [Test worker] INFO item: - onSubscribe(FluxMap.MapSubscriber)
+09:49:56.332 [Test worker] INFO item: - request(unbounded)
+09:49:56.351 [Test worker] INFO item: - onNext(AD14)
+09:49:56.351 [Test worker] INFO item: - onNext(BE25)
+09:49:56.351 [Test worker] INFO item: - onNext(CF36)
+09:49:56.351 [Test worker] INFO item: - onComplete()
+09:49:56.356 [Test worker] INFO item: - onSubscribe(FluxFlatMap.FlatMapMain)
+09:49:56.356 [Test worker] INFO item: - request(unbounded)
+09:49:56.357 [Test worker] INFO item: - onNext(A)
+09:49:56.357 [Test worker] INFO item: - onNext(L)
+09:49:56.357 [Test worker] INFO item: - onNext(E)
+09:49:56.357 [Test worker] INFO item: - onNext(X)
+09:49:56.357 [Test worker] INFO item: - onNext(C)
+09:49:56.357 [Test worker] INFO item: - onNext(H)
+09:49:56.357 [Test worker] INFO item: - onNext(L)
+09:49:56.357 [Test worker] INFO item: - onNext(O)
+09:49:56.357 [Test worker] INFO item: - onNext(E)
+09:49:56.358 [Test worker] INFO item: - onComplete()
+09:49:56.361 [Test worker] INFO item: - onSubscribe(FluxConcatArray.ConcatArraySubscriber)
+09:49:56.361 [Test worker] INFO item: - request(unbounded)
+09:49:56.362 [Test worker] INFO item: - onNext(A)
+09:49:56.362 [Test worker] INFO item: - onNext(B)
+09:49:56.362 [Test worker] INFO item: - onComplete()
+09:49:56.363 [Test worker] INFO item: - onSubscribe(FluxConcatArray.ConcatArraySubscriber)
+09:49:56.364 [Test worker] INFO item: - request(unbounded)
+09:49:56.364 [Test worker] INFO item: - onNext(A)
+09:49:56.364 [Test worker] INFO item: - onNext(B)
+09:49:56.364 [Test worker] INFO item: - onNext(C)
+09:49:56.364 [Test worker] INFO item: - onNext(D)
+09:49:56.364 [Test worker] INFO item: - onNext(E)
+09:49:56.364 [Test worker] INFO item: - onNext(F)
+09:49:56.364 [Test worker] INFO item: - onComplete()
+09:49:56.370 [Test worker] INFO item: - onSubscribe(FluxMergeSequential.MergeSequentialMain)
+09:49:56.370 [Test worker] INFO item: - request(unbounded)
+09:49:56.485 [parallel-7] INFO item: - onNext(A)
+09:49:56.595 [parallel-1] INFO item: - onNext(B)
+09:49:56.706 [parallel-3] INFO item: - onNext(C)
+09:49:56.707 [parallel-3] INFO item: - onNext(D)
+09:49:56.707 [parallel-3] INFO item: - onNext(E)
+09:49:56.752 [parallel-4] INFO item: - onNext(F)
+09:49:56.752 [parallel-4] INFO item: - onComplete()
+09:49:56.754 [Test worker] INFO item: - onSubscribe(FluxFlatMap.FlatMapMain)
+09:49:56.754 [Test worker] INFO item: - request(unbounded)
+09:49:56.924 [parallel-6] INFO item: - onNext(C)
+09:49:57.097 [parallel-7] INFO item: - onNext(H)
+09:49:57.265 [parallel-8] INFO item: - onNext(L)
+09:49:57.436 [parallel-1] INFO item: - onNext(O)
+09:49:57.610 [parallel-2] INFO item: - onNext(E)
+09:49:57.687 [parallel-5] INFO item: - onNext(A)
+09:49:58.620 [parallel-3] INFO item: - onNext(L)
+09:49:59.560 [parallel-4] INFO item: - onNext(E)
+09:50:00.497 [parallel-5] INFO item: - onNext(X)
+09:50:00.497 [parallel-5] INFO item: - onComplete()
+09:50:00.510 [Test worker] INFO item: - onSubscribe([Fuseable] FluxDefaultIfEmpty.DefaultIfEmptySubscriber)
+09:50:00.511 [Test worker] INFO item: - request(unbounded)
+09:50:00.511 [Test worker] INFO item: - onNext(default)
+09:50:00.511 [Test worker] INFO item: - onComplete()
+09:50:00.516 [Test worker] INFO item: - onSubscribe(FluxSwitchIfEmpty.SwitchIfEmptySubscriber)
+09:50:00.516 [Test worker] INFO item: - request(unbounded)
+09:50:00.517 [Test worker] INFO item: - onNext(D)
+09:50:00.517 [Test worker] INFO item: - onNext(E)
+09:50:00.517 [Test worker] INFO item: - onNext(F)
+09:50:00.517 [Test worker] INFO item: - onNext(A)
+09:50:00.517 [Test worker] INFO item: - onNext(U)
+09:50:00.517 [Test worker] INFO item: - onNext(L)
+09:50:00.517 [Test worker] INFO item: - onNext(T)
+09:50:00.518 [Test worker] INFO item: - onComplete()
+09:50:00.522 [Test worker] INFO item: - onSubscribe(FluxMap.MapSubscriber)
+09:50:00.522 [Test worker] INFO item: - request(unbounded)
+09:50:00.530 [Test worker] INFO item: - onNext(AB)
+09:50:00.530 [Test worker] INFO item: - onComplete()
+09:50:00.532 [Test worker] INFO item: - onSubscribe(FluxFlatMap.FlatMapMain)
+09:50:00.532 [Test worker] INFO item: - request(unbounded)
+09:50:00.533 [Test worker] INFO item: - onNext(A)
+09:50:00.533 [Test worker] INFO item: - onNext(L)
+09:50:00.533 [Test worker] INFO item: - onNext(E)
+09:50:00.533 [Test worker] INFO item: - onNext(X)
+09:50:00.533 [Test worker] INFO item: - onNext(C)
+09:50:00.533 [Test worker] INFO item: - onNext(H)
+09:50:00.533 [Test worker] INFO item: - onNext(L)
+09:50:00.533 [Test worker] INFO item: - onNext(O)
+09:50:00.533 [Test worker] INFO item: - onNext(E)
+09:50:00.533 [Test worker] INFO item: - onComplete()
+09:50:00.537 [Test worker] INFO item: - onSubscribe(FluxZip.ZipCoordinator)
+09:50:00.537 [Test worker] INFO item: - request(unbounded)
+09:50:00.537 [Test worker] INFO item: - onNext(AD)
+09:50:00.537 [Test worker] INFO item: - onNext(BE)
+09:50:00.537 [Test worker] INFO item: - onNext(CF)
+09:50:00.538 [Test worker] INFO item: - onComplete()
+09:50:00.539 [Test worker] INFO item: - onSubscribe(FluxZip.ZipCoordinator)
+09:50:00.540 [Test worker] INFO item: - request(unbounded)
+09:50:00.540 [Test worker] INFO item: - onNext(AD)
+09:50:00.540 [Test worker] INFO item: - onNext(BE)
+09:50:00.540 [Test worker] INFO item: - onNext(CF)
+09:50:00.540 [Test worker] INFO item: - onComplete()
+09:50:00.542 [Test worker] INFO item: - onSubscribe(FluxFlatMap.FlatMapMain)
+09:50:00.542 [Test worker] INFO item: - request(unbounded)
+09:50:00.542 [Test worker] INFO item: - onNext(A)
+09:50:00.542 [Test worker] INFO item: - onNext(B)
+09:50:00.542 [Test worker] INFO item: - onComplete()
+09:50:00.543 [Test worker] INFO item: - onSubscribe(FluxFlatMap.FlatMapMain)
+09:50:00.544 [Test worker] INFO item: - request(unbounded)
+09:50:00.653 [parallel-6] INFO item: - onNext(A)
+09:50:00.668 [parallel-7] INFO item: - onNext(D)
+09:50:00.763 [parallel-8] INFO item: - onNext(B)
+09:50:00.795 [parallel-1] INFO item: - onNext(E)
+09:50:00.874 [parallel-2] INFO item: - onNext(C)
+09:50:00.920 [parallel-3] INFO item: - onNext(F)
+09:50:00.920 [parallel-3] INFO item: - onComplete()
+09:50:00.925 [Test worker] INFO item: - onSubscribe(FluxConcatMap.ConcatMapImmediate)
+09:50:00.925 [Test worker] INFO item: - request(unbounded)
+09:50:01.811 [parallel-4] INFO item: - onNext(A)
+09:50:02.698 [parallel-5] INFO item: - onNext(L)
+09:50:03.580 [parallel-6] INFO item: - onNext(E)
+09:50:04.471 [parallel-7] INFO item: - onNext(X)
+09:50:05.052 [parallel-8] INFO item: - onNext(C)
+09:50:05.632 [parallel-1] INFO item: - onNext(H)
+09:50:06.210 [parallel-2] INFO item: - onNext(L)
+09:50:06.783 [parallel-3] INFO item: - onNext(O)
+09:50:07.351 [parallel-4] INFO item: - onNext(E)
+09:50:07.351 [parallel-4] INFO item: - onComplete()
+09:50:07.361 [Test worker] INFO reactor.Mono.FlatMap.18 - | onSubscribe([Fuseable] MonoFlatMap.FlatMapMain)
+09:50:07.362 [Test worker] INFO reactor.Mono.FlatMap.18 - | request(unbounded)
+09:50:07.362 [Test worker] INFO reactor.Mono.FlatMap.18 - | onNext([A, L, E, X])
+09:50:07.362 [Test worker] INFO reactor.Mono.FlatMap.18 - | onComplete()
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
