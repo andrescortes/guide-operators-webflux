@@ -1,7 +1,6 @@
 package com.co.ias.moviesinfoservice.repository;
 
 import com.co.ias.moviesinfoservice.domain.MovieInfo;
-
 import java.time.LocalDate;
 import java.util.List;
 import org.junit.jupiter.api.AfterEach;
@@ -16,6 +15,11 @@ import reactor.test.StepVerifier;
 @DataMongoTest
 @ActiveProfiles("test")
 class MovieInfoRepositoryTest {
+
+    // https://github.com/flapdoodle-oss/de.flapdoodle.embed.mongo/issues/395#issuecomment-1257032064
+    static {
+        System.setProperty("spring.mongodb.embedded.version", "5.0.0");
+    }
 
     @Autowired
     private MovieInfoRepository movieInfoRepository;
@@ -41,7 +45,7 @@ class MovieInfoRepositoryTest {
     @Test
     void findAll() {
         // when
-        Flux<MovieInfo> movieInfoRepositoryAll = movieInfoRepository.findAll();
+        Flux<MovieInfo> movieInfoRepositoryAll = movieInfoRepository.findAll().log();
         // then
         StepVerifier.create(movieInfoRepositoryAll)
             .expectNextCount(3)
