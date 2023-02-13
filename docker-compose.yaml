@@ -2,14 +2,14 @@ version: '3'
 services:
   mongodb:
     image: mongo:4.4
-    container_name: mongodb_local
+    container_name: mongodb
     ports:
       - "27017:27017"
     volumes:
       - mongodata:/data/db
     environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: 1003
-
+      MONGO_INITDB_DATABASE: movie_info_db
+    hostname: localhost
+    restart: unless-stopped
 volumes:
   mongodata:

@@ -3,4 +3,6 @@ include 'movies-review-service'
 include 'movies-service'
 include 'movies-info-service'
 include 'reactive-programming-using-reactor'
+include 'helpers:helpers-jpa-reactive-repository-commons'
+findProject(':helpers:helpers-jpa-reactive-repository-commons')?.name = 'helpers-jpa-reactive-repository-commons'
 

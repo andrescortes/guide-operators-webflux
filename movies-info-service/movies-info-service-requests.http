@@ -1,0 +1,14 @@
+### Create a movieInfo entity
+POST http://localhost:8080/movies-info-service/v1/movie-infos
+Content-Type: application/json
+
+{
+  "name": "Black Phanter",
+  "year": 2019,
+  "cast": [
+    "Harol",
+    "Text",
+    "Mongo"
+  ],
+  "release_date": "2005-06-15"
+}

@@ -2,6 +2,9 @@ spring:
   profiles:
     active: local
 ---
+server:
+  servlet:
+    context-path: /movies-info-service
 spring:
   config:
     activate:
@@ -9,28 +12,21 @@ spring:
         - local
   data:
     mongodb:
-      host: localhost
-      port: 27017
-      database: local
+      movies:
+        database: movie_info_db
+        uri: mongodb://localhost:27017
+  autoconfigure:
+    exclude: org.springframework.boot.autoconfigure.mongo.MongoReactiveAutoConfiguration,org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration
 
 ---
+server:
+  servlet:
+    context-path: /movies-info-service
 spring:
   config:
     activate:
       on-profile:
         - non-prod
-  data:
-    mongodb:
-      host: localhost
-      port: 27017
-      database: local
-
----
-spring:
-  config:
-    activate:
-      on-profile:
-        - prod
   data:
     mongodb:
       host: localhost
