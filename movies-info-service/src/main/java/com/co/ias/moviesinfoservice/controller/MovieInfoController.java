@@ -1,8 +1,7 @@
 package com.co.ias.moviesinfoservice.controller;
 
-import com.co.ias.moviesinfoservice.domain.movieinfo.MovieInfo;
-import com.co.ias.moviesinfoservice.service.MoviesInfoServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.co.ias.moviesinfoservice.domain.MovieInfo;
+import com.co.ias.moviesinfoservice.service.MoviesInfoService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,12 +14,16 @@ import reactor.core.publisher.Mono;
 @RequestMapping("/v1")
 public class MovieInfoController {
 
-    @Autowired
-    private MoviesInfoServiceImpl moviesInfoServiceImpl;
 
-    @PostMapping("/movie-infos")
+    private final MoviesInfoService moviesInfoService;
+
+    public MovieInfoController(MoviesInfoService moviesInfoService) {
+        this.moviesInfoService = moviesInfoService;
+    }
+
+    @PostMapping("/movieinfos")
     @ResponseStatus(HttpStatus.CREATED)
     public Mono<MovieInfo> addMovieInfo(@RequestBody MovieInfo movieInfo) {
-        return moviesInfoServiceImpl.saveMovieInfo(movieInfo);
+        return moviesInfoService.addMovieInfo(movieInfo);
     }
 }

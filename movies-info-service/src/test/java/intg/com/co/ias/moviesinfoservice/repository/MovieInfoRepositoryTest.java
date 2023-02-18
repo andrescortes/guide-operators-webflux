@@ -1,6 +1,6 @@
 package com.co.ias.moviesinfoservice.repository;
 
-import com.co.ias.moviesinfoservice.domain.movieinfo.MovieInfo;
+import com.co.ias.moviesinfoservice.domain.MovieInfo;
 import java.time.LocalDate;
 import java.util.List;
 import org.junit.jupiter.api.AfterEach;

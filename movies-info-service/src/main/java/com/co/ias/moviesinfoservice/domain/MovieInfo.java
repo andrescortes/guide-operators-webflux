@@ -1,4 +1,4 @@
-package com.co.ias.moviesinfoservice.domain.movieinfo;
+package com.co.ias.moviesinfoservice.domain;
 
 import java.time.LocalDate;
 import java.util.List;
