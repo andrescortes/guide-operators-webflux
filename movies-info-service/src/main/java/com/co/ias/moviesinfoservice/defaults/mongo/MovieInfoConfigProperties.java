@@ -10,8 +10,8 @@ import org.springframework.context.annotation.Configuration;
 @Getter
 @Setter
 @Log4j2
-@Configuration
-@ConfigurationProperties(prefix = "spring.data.mongodb")
+//@Configuration
+//@ConfigurationProperties(prefix = "spring.data.mongodb")
 public class MovieInfoConfigProperties {
 
     private MongoProperties movies;

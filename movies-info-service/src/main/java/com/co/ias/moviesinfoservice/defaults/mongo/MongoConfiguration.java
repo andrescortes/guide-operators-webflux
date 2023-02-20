@@ -17,7 +17,7 @@ import org.springframework.data.mongodb.core.ReactiveMongoTemplate;
 /**
  * @see <a href="https://github.com/visweshwar/multi-mongo-reactive"> reactive-mongo-config...</a>
  */
-@Configuration
+//@Configuration
 @RequiredArgsConstructor
 public class MongoConfiguration {
 

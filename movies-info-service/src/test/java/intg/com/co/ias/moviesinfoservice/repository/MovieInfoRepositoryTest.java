@@ -19,9 +19,9 @@ import reactor.test.StepVerifier;
 class MovieInfoRepositoryTest {
 
     // https://github.com/flapdoodle-oss/de.flapdoodle.embed.mongo/issues/395#issuecomment-1257032064
-    static {
+/*    static {
         System.setProperty("spring.mongodb.embedded.version", "5.0.0");
-    }
+    }*/
 
     @Autowired
     private MovieInfoRepository movieInfoRepository;
