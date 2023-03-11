@@ -30,12 +30,12 @@ class MovieInfoRepositoryTest {
     void setUp() {
         List<MovieInfo> movieInfos = List.of(
             new MovieInfo(null, "Batman Begins", 2005, List.of("Christian Bale", "Michael Cane"),
-                LocalDate.parse("2005-06-15")),
+                LocalDate.parse("2005-06-15").atStartOfDay()),
             new MovieInfo(null, "Dark Night", 2005, List.of("Christian Bale", "Michael Cane"),
-                LocalDate.parse("2008-06-15")),
+                LocalDate.parse("2008-06-15").atStartOfDay()),
             new MovieInfo("abc", "Dark Night Rises", 2005,
                 List.of("Christian Bale", "Michael Cane"),
-                LocalDate.parse("2012-06-15"))
+                LocalDate.parse("2012-06-15").atStartOfDay())
         );
         movieInfoRepository.saveAll(movieInfos).blockLast();
     }
@@ -72,7 +72,7 @@ class MovieInfoRepositoryTest {
         // given
         MovieInfo movieInfoToSave = new MovieInfo(null, "Batman Begins", 2005,
             List.of("Christian Bale", "Michael Cane"),
-            LocalDate.parse("2005-06-15"));
+            LocalDate.parse("2005-06-15").atStartOfDay());
         // when
         Mono<MovieInfo> movieInfoMono = movieInfoRepository.save(movieInfoToSave).log();
         // then

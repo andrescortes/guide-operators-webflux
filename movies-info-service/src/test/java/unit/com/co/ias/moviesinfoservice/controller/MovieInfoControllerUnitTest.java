@@ -42,14 +42,14 @@ class MovieInfoControllerUnitTest {
             .movieInfoId("111")
             .name("Barcelona")
             .year(2015)
-            .release_date(LocalDate.now())
+            .releaseDate(LocalDate.now().atStartOfDay())
             .cast(List.of("Wolf", "Cow"))
             .build();
         movieInfo2 = MovieInfo.builder()
             .name("Zoo")
             .movieInfoId("222")
             .year(2016)
-            .release_date(LocalDate.now())
+            .releaseDate(LocalDate.now().atStartOfDay())
             .cast(List.of("Silver", "Plate"))
             .build();
 
@@ -137,7 +137,7 @@ class MovieInfoControllerUnitTest {
             .name("")
             .year(-2000)
             .cast(List.of("Talk", "Closing"))
-            .release_date(LocalDate.now())
+            .releaseDate(LocalDate.now().atStartOfDay())
             .build();
         // when
         Mockito.when(moviesInfoServiceMock.addMovieInfo(isA(MovieInfo.class)))
@@ -158,7 +158,7 @@ class MovieInfoControllerUnitTest {
             .name("")
             .year(-2000)
             .cast(List.of(""))
-            .release_date(LocalDate.now())
+            .releaseDate(LocalDate.now().atStartOfDay())
             .build();
         // when
         Mockito.when(moviesInfoServiceMock.addMovieInfo(isA(MovieInfo.class)))

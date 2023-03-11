@@ -36,7 +36,7 @@ public class MoviesInfoService {
                 s.setYear(movieInfo.getYear());
                 s.setCast(movieInfo.getCast());
                 s.setName(movieInfo.getName());
-                s.setRelease_date(movieInfo.getRelease_date());
+                s.setReleaseDate(movieInfo.getReleaseDate());
                 return movieInfoRepository.save(s);
             });
     }

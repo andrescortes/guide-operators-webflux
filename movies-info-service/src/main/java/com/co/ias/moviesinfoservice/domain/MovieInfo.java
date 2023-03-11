@@ -1,6 +1,5 @@
 package com.co.ias.moviesinfoservice.domain;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import javax.validation.constraints.NotBlank;
@@ -8,16 +7,18 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
+@Setter
+@Getter
 @Document
-@Builder
+@Builder(toBuilder = true)
 public class MovieInfo {
 
     @Id
@@ -30,5 +31,5 @@ public class MovieInfo {
 
     private List<@NotBlank(message = "movieInfo.cast must be present") String> cast;
 
-    private LocalDateTime release_date;
+    private LocalDateTime releaseDate;
 }

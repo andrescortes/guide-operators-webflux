@@ -1,4 +1,4 @@
-package com.co.ias.moviesinfoservice.domain.exceptionHandler;
+package com.co.ias.moviesinfoservice.domain.exceptionhandler;
 
 import java.util.List;
 import java.util.stream.Collectors;

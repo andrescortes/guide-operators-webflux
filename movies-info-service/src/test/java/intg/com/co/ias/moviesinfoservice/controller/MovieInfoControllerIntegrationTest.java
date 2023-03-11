@@ -5,6 +5,7 @@ import com.co.ias.moviesinfoservice.repository.MovieInfoRepository;
 import java.time.LocalDate;
 import java.util.List;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,8 @@ import org.springframework.boot.test.autoconfigure.web.reactive.AutoConfigureWeb
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.reactive.server.WebTestClient;
+import reactor.core.publisher.Flux;
+import reactor.test.StepVerifier;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @ActiveProfiles("test")
@@ -29,11 +32,14 @@ class MovieInfoControllerIntegrationTest {
     @BeforeEach
     void setUp() {
         var movieinfos = List.of(new MovieInfo(null, "Batman Begins",
-                2005, List.of("Christian Bale", "Michael Cane"), LocalDate.parse("2005-06-15")),
+                2005, List.of("Christian Bale", "Michael Cane"),
+                LocalDate.parse("2005-06-15").atStartOfDay()),
             new MovieInfo(null, "The Dark Knight",
-                2008, List.of("Christian Bale", "HeathLedger"), LocalDate.parse("2008-07-18")),
+                2008, List.of("Christian Bale", "HeathLedger"),
+                LocalDate.parse("2008-07-18").atStartOfDay()),
             new MovieInfo("abc", "Dark Knight Rises",
-                2012, List.of("Christian Bale", "Tom Hardy"), LocalDate.parse("2012-07-20")));
+                2012, List.of("Christian Bale", "Tom Hardy"),
+                LocalDate.parse("2012-07-20").atStartOfDay()));
 
         movieInfoRepository.saveAll(movieinfos)
             .blockLast();
@@ -48,7 +54,8 @@ class MovieInfoControllerIntegrationTest {
     void addMovieInfo() {
         //given
         var movieInfo = new MovieInfo(null, "Batman Begins1",
-            2005, List.of("Christian Bale", "Michael Cane"), LocalDate.parse("2005-06-15"));
+            2005, List.of("Christian Bale", "Michael Cane"),
+            LocalDate.parse("2005-06-15").atStartOfDay());
 
         //when
         webTestClient
@@ -101,5 +108,47 @@ class MovieInfoControllerIntegrationTest {
                     assertNotNull(movieInfo);
                 });*/
 
+    }
+
+    @Test
+    void streamMovieInfoSink() {
+        //given
+        var movieInfo = new MovieInfo(null, "Batman Begins1",
+            2005, List.of("Christian Bale", "Michael Cane"),
+            LocalDate.parse("2005-06-15").atStartOfDay());
+
+        //when
+        webTestClient
+            .post()
+            .uri(MOVIES_INFO_URL)
+            .bodyValue(movieInfo)
+            .exchange()
+            .expectStatus()
+            .isCreated()
+            .expectBody(MovieInfo.class)
+            .consumeWith(movieInfoEntityExchangeResult -> {
+
+                var savedMovieInfo = movieInfoEntityExchangeResult.getResponseBody();
+                assert savedMovieInfo != null;
+                assert savedMovieInfo.getMovieInfoId() != null;
+            });
+
+        Flux<MovieInfo> movieInfoFluxExchangeResult = webTestClient
+            .get()
+            .uri(MOVIES_INFO_URL + "/stream")
+            .exchange()
+            .expectStatus()
+            .is2xxSuccessful()
+            .returnResult(MovieInfo.class)
+            .getResponseBody();
+
+        StepVerifier.create(movieInfoFluxExchangeResult).assertNext(movieInfo1 -> {
+                assert movieInfo1.getMovieInfoId() != null;
+                Assertions.assertEquals(movieInfo.getName(), movieInfo1.getName());
+                Assertions.assertEquals(movieInfo.getYear(), movieInfo1.getYear());
+                Assertions.assertEquals(movieInfo.getCast().size(),movieInfo1.getCast().size());
+            })
+            .thenCancel()
+            .verify();
     }
 }

@@ -1,15 +1,23 @@
 package com.reactivespring.client;
 
+import com.reactivespring.domain.Movie;
 import com.reactivespring.domain.MovieInfo;
+import com.reactivespring.domain.Review;
 import com.reactivespring.exception.MoviesInfoClientException;
 import com.reactivespring.exception.MoviesInfoServerException;
+import com.reactivespring.util.RetryUtil;
+import java.time.Duration;
 import java.util.logging.Level;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
+import reactor.core.Exceptions;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
+import reactor.util.retry.Retry;
+import reactor.util.retry.RetryBackoffSpec;
 
 @Slf4j
 @Component
@@ -54,18 +62,36 @@ public class MoviesInfoRestClient {
                             response.statusCode().value())));
             })
             .bodyToMono(MovieInfo.class)
-/*            .onErrorMap(Predicate.not(MoviesInfoClientException.class::isInstance), throwable -> {
-                log.error("Failed to send rquest to service", throwable);
-                return new Exception("Failed to send request to service", throwable);
-            })*/
+//            .retry(3)
+            .retryWhen(RetryUtil.retrySpec())
             .doOnError(error -> log.error("Failed to send request to service at ends: {}",
                 error.getMessage(), error))
             .log("Item received: ", Level.INFO, true);
 
-/*        return webClient.get()
-            .uri(url, movieId)
+    }
+
+    public Flux<MovieInfo> retrieveMovieInfoStream() {
+        String url = moviesInfoUrl.concat("/stream");
+       return webClient.get().uri(url)
             .retrieve()
-            .bodyToMono(MovieInfo.class)
-            .log();*/
+            .onStatus(HttpStatus::is5xxServerError, response -> {
+                if (response.statusCode().equals(HttpStatus.INTERNAL_SERVER_ERROR)) {
+                    log.error("Error got status code: " + response.statusCode().value());
+                    return Mono.error(new MoviesInfoServerException(
+                        "There is no Server available!",
+                        response.statusCode().value()));
+                }
+                return response.bodyToMono(String.class)
+                    .flatMap(responseMessage -> Mono.error(
+                        new MoviesInfoServerException(responseMessage,
+                            response.statusCode().value())));
+            })
+            .bodyToFlux(MovieInfo.class)
+//            .retry(3)
+            .retryWhen(RetryUtil.retrySpec())
+            .doOnError(error -> log.error("Failed to send request to service at ends: {}",
+                error.getMessage(), error))
+            .log("Item received: ", Level.INFO, true);
+
     }
 }

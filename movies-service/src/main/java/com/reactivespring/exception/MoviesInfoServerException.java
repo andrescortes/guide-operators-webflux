@@ -10,7 +10,7 @@ import lombok.Setter;
 @AllArgsConstructor
 public class MoviesInfoServerException extends RuntimeException {
 
-    private String message;
-    private Integer statusCode;
+    private final String message;
+    private final Integer statusCode;
 
 }
