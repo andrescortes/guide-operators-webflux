@@ -29,7 +29,6 @@ public class ReviewsRestClient {
         String uriString = UriComponentsBuilder.fromHttpUrl(reviewUrl)
             .queryParam("movieInfoId", movieId)
             .buildAndExpand().toUriString();
-        System.out.println("uriString = " + uriString);
         return webClient.get()
             .uri(uriString)
             .retrieve()
@@ -58,20 +57,13 @@ public class ReviewsRestClient {
                             response.statusCode().value())));
             })
             .bodyToFlux(Review.class)
-/*            .onErrorMap(Predicate.not(ReviewsClientException.class::isInstance), throwable -> {
-                log.error("Failed to send request to service", throwable);
-                return new Exception("onErrorMap, Failed to send request to service", throwable);
-            })*/
+
             .doOnError(
                 error -> log.error("doOnError, Failed to send request to service at ends: {}",
                     error.getMessage()))
 /*            .onErrorResume(WebClientResponseException.class, ex ->
                 ex.getRawStatusCode() == 404 ? Mono.empty() : Mono.error(ex))*/
             .log("Item received: ", Level.INFO, true);
-/*        return webClient.get()
-            .uri(uriString)
-            .retrieve()
-            .bodyToFlux(Review.class)
-            .log("Item received: ", Level.INFO, true);*/
+
     }
 }
