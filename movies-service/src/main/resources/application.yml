@@ -3,3 +3,6 @@ spring:
     active: local
 server:
   port: 8082
+restClient:
+  moviesInfoURL: http://localhost:8080/v1/movieinfos
+  reviewsURL: http://localhost:8081/v1/reviews

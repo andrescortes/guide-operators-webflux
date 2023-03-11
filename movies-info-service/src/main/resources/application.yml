@@ -1,6 +1,6 @@
 spring:
   profiles:
-    active: local
+    active: non-prod
 ---
 server:
   servlet:
@@ -19,9 +19,9 @@ spring:
     exclude: org.springframework.boot.autoconfigure.mongo.MongoReactiveAutoConfiguration,org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration
 
 ---
-server:
-  servlet:
-    context-path: /movies-info-service
+#server:
+#  servlet:
+#    context-path: /movies-info-service
 spring:
   config:
     activate:

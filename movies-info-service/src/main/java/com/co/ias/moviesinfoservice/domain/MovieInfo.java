@@ -1,6 +1,7 @@
 package com.co.ias.moviesinfoservice.domain;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -28,5 +29,6 @@ public class MovieInfo {
     private Integer year;
 
     private List<@NotBlank(message = "movieInfo.cast must be present") String> cast;
-    private LocalDate release_date;
+
+    private LocalDateTime release_date;
 }

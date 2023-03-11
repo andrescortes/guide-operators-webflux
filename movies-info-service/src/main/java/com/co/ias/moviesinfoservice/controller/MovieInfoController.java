@@ -2,7 +2,6 @@ package com.co.ias.moviesinfoservice.controller;
 
 import com.co.ias.moviesinfoservice.domain.MovieInfo;
 import com.co.ias.moviesinfoservice.service.MoviesInfoService;
-import javax.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -55,7 +54,7 @@ public class MovieInfoController {
 
     @PostMapping("/movieinfos")
     @ResponseStatus(HttpStatus.CREATED)
-    public Mono<MovieInfo> addMovieInfo(@RequestBody @Valid MovieInfo movieInfo) {
+    public Mono<MovieInfo> addMovieInfo(@RequestBody MovieInfo movieInfo) {
         return moviesInfoService.addMovieInfo(movieInfo);
     }
 
